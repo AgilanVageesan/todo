@@ -1,1 +1,53 @@
-<h1>RETRO</h1>
+<div class="titlecontainer" style="margin-left: 32%;">
+    <div class="titleshadows"><span>R</span><span>E</span><span>T</span><span>O</span></div>
+  </div>
+
+<div class="row d-flex justify-content-center container" style="padding-right: 0 !important;">
+    
+    <div class="col-md-5">
+        <div class="card-hover-shadow-2x mb-3 card border">
+            <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-2 border" style="margin: 2%;">
+                <div class="input-group " >
+                  <input type="search" placeholder="What are plans ?" aria-describedby="button-addon1" [(ngModel)]="currentText" class="form-control border-0 bg-light">
+                  <div class="input-group-append">
+                    <button id="button-addon1" type="submit" class="btn btn-link text-primary" (click)="AddRetroPoint()"><i class="fa fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Task Lists</div>
+            </div>
+            
+            <div class="scroll-area-sm">
+                    <div style="position: static;" class="ps ps--active-y">
+                        <div class="ps-content">
+                            <ul class=" list-group list-group-flush">
+
+                                <li class="list-group-item jumphover" style="margin: 2%;padding: 1%;"  *ngFor="let task of tasks;let index =index">
+                                    <div class="todo-indicator bg-warning"></div>
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <!-- <div class="widget-content-left mr-2">
+                                                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>
+                                            </div> -->
+                                            <div class="widget-content-left " style="padding-left: 4% ;">
+                                                <div class="widget-heading">{{ task }} <div class="badge badge-danger ml-2">Rejected</div>
+                                                </div>
+                                                <!-- <div class="widget-subheading"><i>By Bob</i></div> -->
+                                            </div>
+                                            <div class="widget-content-right"> 
+                                                <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> 
+                                                <button class="border-0 btn-transition btn btn-outline-danger" (click)="DeleteTask(index)"> <i class="fa fa-trash"></i> </button> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            <!-- <div class="d-block text-right card-footer"><button class="mr-2 btn btn-link btn-sm">Cancel</button><button class="btn btn-primary">Add Task</button></div> -->
+        </div>
+    </div>
+</div>
