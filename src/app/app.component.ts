@@ -9,19 +9,25 @@ export class AppComponent implements OnInit {
   title = "retro";
   currentText: string;
   tasks: Array<string> = [];
+
   ngOnInit() {
-    this.tasks.push("lala");
-    this.tasks.push("lets build a retro app");
+    this.tasks = JSON.parse(localStorage.getItem("tasks"));
   }
 
-  AddRetroPoint() {
+  AddTask() {
     if (this.currentText.length > 1) {
       this.tasks.push(this.currentText);
       this.currentText = "";
     }
-  }
-  DeleteTask(index){
-    this.tasks.splice(index,1)
+    this.SetLocalStorage()
   }
 
+  DeleteTask(index) {
+    this.tasks.splice(index, 1);
+    this.SetLocalStorage();
+  }
+
+  SetLocalStorage() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
+  }
 }

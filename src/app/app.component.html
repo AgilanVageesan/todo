@@ -10,10 +10,10 @@
             <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-2 border" style="margin: 2%;">
                 <div class="input-group ">
                     <input type="search" placeholder="What are plans ?" aria-describedby="button-addon1"
-                        [(ngModel)]="currentText" class="form-control border-0 bg-light">
+                        [(ngModel)]="currentText" class="form-control border-0 bg-light" (keyup.enter)="AddTask()">
                     <div class="input-group-append">
                         <button id="button-addon1" type="submit" class="btn btn-link text-primary"
-                            (click)="AddRetroPoint()"><i class="fa fa-plus"></i></button>
+                            (click)="AddTask()" ><i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>
