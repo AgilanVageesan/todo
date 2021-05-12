@@ -11,8 +11,12 @@ export class AppComponent implements OnInit {
   tasks: Array<string> = [];
 
   ngOnInit() {
-    localStorage.setItem("tasks", JSON.stringify(this.tasks));
-    this.tasks = JSON.parse(localStorage.getItem("tasks"));
+    if (localStorage.getItem("tasks") === null) {
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      this.tasks = JSON.parse(localStorage.getItem("tasks"));
+    } else {
+      this.tasks = JSON.parse(localStorage.getItem("tasks"));
+    }
   }
 
   AddTask() {
@@ -20,7 +24,7 @@ export class AppComponent implements OnInit {
       this.tasks.push(this.currentText);
       this.currentText = "";
     }
-    this.SetLocalStorage()
+    this.SetLocalStorage();
   }
 
   DeleteTask(index) {
