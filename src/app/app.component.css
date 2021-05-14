@@ -346,3 +346,8 @@ i {
     cursor: pointer;
     width: 605px;
   }
+
+  .checkStyle{
+  margin: 2%;padding: 1%;
+  border: #3ac47d solid;
+  }

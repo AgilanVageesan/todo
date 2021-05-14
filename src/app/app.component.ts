@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Task } from "./task";
 
 @Component({
   selector: "app-root",
@@ -6,10 +7,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = "retro";
-  currentText: string;
-  tasks: Array<string> = [];
-
+  title = "todo";
+  currentTask: Task = { Text: "", Completed: false };
+  tasks: Array<Task> = [];
+  checkBtnStyle: string = "";
   ngOnInit() {
     if (localStorage.getItem("tasks") === null) {
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
@@ -20,9 +21,14 @@ export class AppComponent implements OnInit {
   }
 
   AddTask() {
-    if (this.currentText.length > 1) {
-      this.tasks.push(this.currentText);
-      this.currentText = "";
+    if (this.currentTask.Text.length > 1) {
+      let newTask:Task={
+        Id: this.tasks.length + 1,
+        Text: this.currentTask.Text,
+        Completed: false
+      }
+      this.tasks.push(newTask);
+      this.currentTask={}
     }
     this.SetLocalStorage();
   }
@@ -34,5 +40,11 @@ export class AppComponent implements OnInit {
 
   SetLocalStorage() {
     localStorage.setItem("tasks", JSON.stringify(this.tasks));
+  }
+
+  TodoComplete(taskId) {
+    const index=this.tasks.findIndex(x=>x.Id==taskId);
+    this.tasks[index].Completed=true;
+    this.SetLocalStorage();
   }
 }

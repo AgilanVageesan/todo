@@ -1,19 +1,21 @@
 <header>
-    <h1 class="gradient-text titletext" style="margin-top: 1%;">TASK</h1>
-    <h3 class="gradient-text titletext" style="margin-bottom: 0.5%;font-size: xxx-large;padding-left: 1%;">MASTER</h3>
-  </header> 
+    <h1 class="gradient-text titletext" style="margin-top: 1%;">TODO</h1>
+    <h3 class="gradient-text titletext" style="margin-bottom: 0.5%;font-size: xxx-large;padding-left: 1%;"> 
+        Master</h3>
+</header>
+
 
 <div class="d-flex justify-content-center container" style="margin-top: auto;">
-
     <div class="col-md-6">
         <div class="card-hover-shadow-2x mb-3 card border">
             <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-2 border" style="margin: 2%;">
                 <div class="input-group ">
-                    <input type="search" placeholder="What are plans ?" aria-describedby="button-addon1"
-                        [(ngModel)]="currentText" class="form-control border-0 bg-light" (keyup.enter)="AddTask()">
+                    <input type="search" name='currentTask.Id' placeholder="What are plans ?"
+                        aria-describedby="button-addon1" [(ngModel)]="currentTask.Text" id="currentTask.Id"
+                        class="form-control border-0 bg-light" (keyup.enter)="AddTask()">
                     <div class="input-group-append">
                         <button id="button-addon1" type="submit" class="btn btn-link text-primary"
-                            (click)="AddTask()" ><i class="fa fa-plus"></i></button>
+                            (click)="AddTask()"><i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -27,22 +29,18 @@
                     <div class="ps-content">
                         <ul class=" list-group list-group-flush">
 
-                            <li class="list-group-item jumphover" style="margin: 2%;padding: 1%;"
-                                *ngFor="let task of tasks;let index =index">
+                            <li class="list-group-item jumphover" 
+                                style="margin: 2%;padding: 1%;" id="task.Id" *ngFor="let task of tasks;let index =index">
                                 <div class="todo-indicator bg-warning"></div>
                                 <div class="widget-content p-0">
                                     <div class="widget-content-wrapper">
-                                        <!-- <div class="widget-content-left mr-2">
-                                                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>
-                                            </div> -->
                                         <div class="widget-content-left " style="padding-left: 4% ;">
-                                            <div class="widget-heading" style="width: fit-content;">{{ task }}
+                                            <div class="widget-heading" style="width: fit-content;">{{ task.Text }}
                                             </div>
-                                            <!-- <div class="widget-subheading"><i>By Bob</i></div> -->
                                         </div>
                                         <div class="widget-content-right">
-                                            <button class="border-0 btn-transition btn btn-outline-success"> <i
-                                                    class="fa fa-check"></i></button>
+                                            <button class="border-0 btn-transition btn btn-outline-success"
+                                                (click)="TodoComplete(task.Id)"> <i class="fa fa-check"></i></button>
                                             <button class="border-0 btn-transition btn btn-outline-danger"
                                                 (click)="DeleteTask(index)"> <i class="fa fa-trash"></i> </button>
                                         </div>
@@ -54,7 +52,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="d-block text-right card-footer"><button class="mr-2 btn btn-link btn-sm">Cancel</button><button class="btn btn-primary">Add Task</button></div> -->
         </div>
     </div>
 </div>
